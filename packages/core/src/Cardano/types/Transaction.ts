@@ -12,6 +12,7 @@ import { ProposalProcedure, VotingProcedures } from './Governance';
 import { RewardAccount } from '../Address';
 import { Script } from './Script';
 import { TxBodyCBOR } from '../../CBOR/TxBodyCBOR';
+import { TxCBOR } from '../../CBOR';
 import { bytesToHex, hexToBytes } from '../../util/misc';
 
 /** transaction hash as hex string */
@@ -159,6 +160,7 @@ export interface OnChainTx<TBody extends TxBody = TxBody>
   extends Omit<TxWithInputSource<TBody>, 'witness' | 'auxiliaryData'> {
   witness: Omit<Witness, 'scripts'>;
   auxiliaryData?: Omit<AuxiliaryData, 'scripts'>;
+  cbor?: TxCBOR;
 }
 
 export interface HydratedTx extends TxWithInputSource<HydratedTxBody> {
